@@ -1,5 +1,5 @@
 <script>
-	async function postData(url = "", donnees = {}) {
+	async function postData(url = "", data = {}) {
 	const response = await fetch(url, {
 		method: "POST",
 		mode: "cors",
@@ -10,13 +10,13 @@
 		},
 		redirect: "follow",
 		referrerPolicy: "no-referrer",
-		body: JSON.stringify(donnees),
+		body: JSON.stringify(data),
 	});
 	return response.json();
 	}
 
-	postData("https://example.com/solution", { solution: 42 }).then((donnees) => {
-	console.log(donnees); // Les données JSON analysées par l'appel `donnees.json()`
+	postData("http://API", { param1: 1, param2: 2 }).then((data) => {
+		console.log(data);
 	});
 </script>
 
