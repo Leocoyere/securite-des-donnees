@@ -60,8 +60,8 @@ class UserRepository {
       const c = await pool.connect();
       try {
         const query = `
-        INSERT INTO users (first_name, last_name, email, password, phone, status)
-        VALUES($1, $2, $3, $4, $5, $6)
+        INSERT INTO users (first_name, last_name, email, password, phone, status, lastconnection)
+        VALUES($1, $2, $3, $4, $5, $6, $7)
         RETURNING user_id
       `;
         const values = [
@@ -70,7 +70,8 @@ class UserRepository {
           user.email,
           user.password,
           user.phone || null,
-          user.status || 'New'
+          user.status || 'New',
+          user.lastConnection || '2024-07-02 13:10:00'
         ];
         const result = await pool.query(query, values);
         const insertedUserId = result.rows[0].user_id;
@@ -97,8 +98,9 @@ class UserRepository {
               email = $3,
               password = $4,
               phone = $5,
-              status = $6
-          WHERE user_id = $7
+              status = $6,
+              user.lastconnection = $7
+          WHERE user_id = $8
         `;
         const values = [
           updatedUser.first_name,

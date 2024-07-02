@@ -43,16 +43,17 @@ class UserController {
     try {
       const user = req.body;
       const myUserid = await UserService.createUser(user);
-      const token = jwt.sign({ id: myUserid }, process.env.JWT_SECRET);
+      /* const token = jwt.sign({ id: myUserid }, process.env.JWT_SECRET);
       res.cookie('access_token', token, {
         httpOnly: false,
-      });
+      }); */
       res.status(200).json({
         success: true,
         message: 'User created successfully',
         myUserid,
       });
     } catch (error: unknown) {
+      console.log(res);
       res.status(500).json({
         success: false,
         message: 'Failed to create user',
