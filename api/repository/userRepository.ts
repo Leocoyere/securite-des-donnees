@@ -92,6 +92,7 @@ class UserRepository {
   static async updateUser(userId: string, updatedUser: User): Promise<void> {
     try {
       let c = await pool.connect()
+      console.log(userId)
       try {
         const query = `
           UPDATE users
@@ -101,7 +102,7 @@ class UserRepository {
               password = $4,
               phone = $5,
               status = $6,
-              user.lastconnection = $7
+              lastconnection = $7
           WHERE user_id = $8
         `;
         const values = [
@@ -111,8 +112,10 @@ class UserRepository {
           updatedUser.password,
           updatedUser.phone,
           updatedUser.status,
+          updatedUser.lastConnection,
           userId,
         ];
+        console.log(values)
         await pool.query(query, values);
       } catch (error: unknown) {
         throw error;

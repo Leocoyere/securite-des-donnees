@@ -3,6 +3,10 @@ import UserService from '../service/userService';
 var jwt = require('jsonwebtoken');
 require('dotenv').config();
 
+interface CustomRequest extends Request {
+  id : string;
+}
+
 class UserController {
   static async getAllUsers(req: Request, res: Response): Promise<void> {
     try {
@@ -21,10 +25,11 @@ class UserController {
     }
   }
 
-  static async getUserById(req: Request, res: Response): Promise<void> {
+  static async getUserById(req: CustomRequest, res: Response): Promise<void> {
     try {
-      const userId = req.params.id;
+      const userId = req.id;
       const user = await UserService.getUserById(userId);
+      
       res.status(200).json({
         success: true,
         message: 'User retrieved successfully',
@@ -62,9 +67,9 @@ class UserController {
     }
   }
 
-  static async updateUser(req: Request, res: Response): Promise<void> {
+  static async updateUser(req: CustomRequest, res: Response): Promise<void> {
     try {
-      const userId = req.params.id;
+      const userId = req.id;
       const updatedUser = req.body;
       await UserService.updateUser(userId, updatedUser);
       res
@@ -79,9 +84,9 @@ class UserController {
     }
   }
 
-  static async deleteUser(req: Request, res: Response): Promise<void> {
+  static async deleteUser(req: CustomRequest, res: Response): Promise<void> {
     try {
-      const userId = req.params.id;
+      const userId = req.id;
       await UserService.deleteUser(userId);
       res
         .status(200)
