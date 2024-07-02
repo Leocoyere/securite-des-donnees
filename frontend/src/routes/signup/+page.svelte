@@ -38,13 +38,11 @@
 			adress: adress.value + ", " + city.value + " " + zip_code.value + " - " + country.value,
 			cb: card_name.value + " - " + card_number.value + " - " + card_expiration.value + " - " + card_cvv.value
 		}
-		console.log(formData)
 		if ( first_name.value && last_name.value && email.value && password.value && adress.value && city.value && zip_code.value && country.value && card_name.value && card_number.value && card_expiration.value && card_cvv.value)
 			postData("http://localhost:5000/api/users", formData).then((data) => {
 				console.log(data);
 			});
 	}
-
 
 </script>
 
