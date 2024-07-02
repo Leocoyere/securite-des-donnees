@@ -23,10 +23,10 @@
 				<a href="/about">About</a>
 			</li>
 			<li aria-current={$page.url.pathname === '/signup' ? 'page' : undefined}>
-				<a href="/signup">Signup</a>
+				<a href="/signup">Inscription</a>
 			</li>
 			<li aria-current={$page.url.pathname === '/login' ? 'page' : undefined}>
-				<a href="/login">Login</a>
+				<a href="/login">Connexion</a>
 			</li>
 		</ul>
 		<svg viewBox="0 0 2 3" aria-hidden="true">
