@@ -9,7 +9,10 @@ const port = 4000;
 // Middleware
 app.use(express.urlencoded({ extended: false }));
 app.use(express.json());
-
+app.use(cors({
+  origin: 'http://localhost:5173',
+  credentials: true
+}));
 
 /* var corsOptions = {
   origin: 'http://127.0.0.1:5173',

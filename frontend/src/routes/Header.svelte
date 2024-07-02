@@ -2,6 +2,11 @@
 	import { page } from '$app/stores';
 	import logo from '$lib/images/svelte-logo.svg';
 	import github from '$lib/images/github.svg';
+    import {authenticated} from '../stores/auth';
+	let auth = false;
+	authenticated.subscribe(a => auth = a );
+
+
 </script>
 
 <header>
@@ -19,12 +24,19 @@
 			<li aria-current={$page.url.pathname === '/' ? 'page' : undefined}>
 				<a href="/">Home</a>
 			</li>
+			{#if auth}
+			<li aria-current={$page.url.pathname === '/signup' ? 'page' : undefined}>
+				<a href="#">Déconnexion</a>
+			</li>
+		
+			{:else}
 			<li aria-current={$page.url.pathname === '/signup' ? 'page' : undefined}>
 				<a href="/signup">Inscription</a>
 			</li>
 			<li aria-current={$page.url.pathname === '/login' ? 'page' : undefined}>
 				<a href="/login">Connexion</a>
 			</li>
+			{/if}
 		</ul>
 		<svg viewBox="0 0 2 3" aria-hidden="true">
 			<path d="M0,0 L0,3 C0.5,3 0.5,3 1,2 L2,0 Z" />

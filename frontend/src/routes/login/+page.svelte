@@ -1,4 +1,41 @@
-<form class="mb-0 flex flex-col items-center">
+<script>
+    import { goto } from '$app/navigation';
+    import Cookies from 'js-cookie';
+    import {authenticated} from '../../stores/auth';
+
+    
+    let email = '';
+    let password = '';
+
+    const submit = async () => {
+        try {
+            const response = await fetch('http://127.0.0.1:5000/api/users/login', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                credentials: 'include',
+                body: JSON.stringify({ email, password })
+            });
+
+            if (!response.ok) {
+                throw new Error('Network response was not ok');
+            }
+
+            const data = await response.json();
+            console.log(data);
+            
+            // Stocker le token dans un cookie
+            Cookies.set('token', data.token, { expires: 7 });
+            authenticated.set(true)
+
+            goto('/');
+        } catch (error) {
+            authenticated.set(false)
+            console.error('There was a problem with the fetch operation:', error);
+        }
+    };
+</script>
+
+<form class="mb-0 flex flex-col items-center" on:submit|preventDefault={submit}>
     <h1 class="mb-4 text-5xl font-extrabold text-gray-900">Se connecter</h1>
 
     <div class="border-b border-gray-900/10 pb-12">
@@ -6,14 +43,14 @@
             <div class="sm:col-span-3">
                 <label for="mail" class="block text-sm font-medium leading-6 text-gray-900">Mail</label>
                 <div class="mt-2">
-                    <input type="email" name="mail" id="mail" class="block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                    <input bind:value={email} type="email" name="mail" id="mail" class="block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                 </div>
             </div>
 
             <div class="sm:col-span-3 mt-4 sm:mt-0">
                 <label for="password" class="block text-sm font-medium leading-6 text-gray-900">Mot de passe</label>
                 <div class="mt-2">
-                    <input type="password" name="password" id="password" class="block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
+                    <input bind:value={password} type="password" name="password" id="password" class="block w-full rounded-md border-0 py-1.5 px-1.5 text-gray-900 shadow-sm ring-1 ring-inset ring-gray-300 placeholder:text-gray-400 focus:ring-2 focus:ring-inset focus:ring-indigo-600 sm:text-sm sm:leading-6">
                 </div>
             </div>
         </div>
