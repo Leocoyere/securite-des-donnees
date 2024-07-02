@@ -1,5 +1,6 @@
 import express from 'express';
 import UserController from '../controllers/userController';
+import authenticateToken from '../middleware/authentification';
 
 const router = express.Router();
 
@@ -16,12 +17,12 @@ router.post('/', UserController.createUser);
 router.get('/:id', UserController.getUserById);
 
 // Route pour mettre à jour un utilisateur
-router.put('/:id', UserController.updateUser);
+router.put('/:id', authenticateToken, UserController.updateUser);
 
 // Route pour supprimer un utilisateur
-router.delete('/:id', UserController.deleteUser);
+router.delete('/:id', authenticateToken, UserController.deleteUser);
 
 // Route pour la déconnexion (logout)
-router.post('/disconnect', UserController.disconnectUser);
+router.post('/disconnect',  authenticateToken,  UserController.disconnectUser);
 
 export default router;
