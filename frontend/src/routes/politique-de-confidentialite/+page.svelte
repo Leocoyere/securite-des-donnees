@@ -5,7 +5,7 @@
       <div class="mt-6 sm:mt-8">
         <div class="prose prose-lg text-gray-900 dark:text-white">
             <h1 class="text-2xl md:text-3xl pl-2 my-2 mb-9 border-l-4 font-sans font-bold border-indigo-600 dark:text-gray-200">
-                Traitement des Données Personnelles : Votre Vie Privée Nous Importe
+                Traitement des Données Personnelles :<br> Votre Vie Privée Nous Importe
             </h1>
 
           <p>Chez [Nom de Votre Entreprise/Site Web], nous accordons une importance primordiale à la protection et à la sécurité de vos données personnelles. Conformément au Règlement Général sur la Protection des Données (RGPD), cette politique vise à vous informer sur la manière dont nous collectons, utilisons, partageons et protégeons vos informations personnelles lorsque vous utilisez notre site web.</p>
