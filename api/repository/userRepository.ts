@@ -129,7 +129,8 @@ class UserRepository {
       const c = await pool.connect();
       try {
         const values = [userId];
-        const query = 'UPDATE users SET status = \'Inactive\' WHERE user_id = $1';
+        const query = 'DELETE FROM users WHERE user_id = $1';
+
         await pool.query(query, values);
       } catch (error) {
         throw error;
