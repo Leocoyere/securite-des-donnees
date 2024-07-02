@@ -8,7 +8,7 @@
                 Traitement des Données Personnelles :<br> Votre Vie Privée Nous Importe
             </h1>
 
-          <p>Chez [Nom de Votre Entreprise/Site Web], nous accordons une importance primordiale à la protection et à la sécurité de vos données personnelles. Conformément au Règlement Général sur la Protection des Données (RGPD), cette politique vise à vous informer sur la manière dont nous collectons, utilisons, partageons et protégeons vos informations personnelles lorsque vous utilisez notre site web.</p>
+          <p>Chez nous, nous accordons une importance primordiale à la protection et à la sécurité de vos données personnelles. Conformément au Règlement Général sur la Protection des Données (RGPD), cette politique vise à vous informer sur la manière dont nous collectons, utilisons, partageons et protégeons vos informations personnelles lorsque vous utilisez notre site web.</p>
 
           <h2 class="text-lg pl-2 mt-9 mb-3 border-l-4 font-sans font-bold border-indigo-600 dark:text-gray-200">
             Collecte des Données Personnelles
@@ -61,16 +61,16 @@
             <li>Le droit de vous opposer au traitement de vos données personnelles pour le marketing direct</li>
           </ul>
 
-          <p>Pour exercer ces droits ou pour toute question concernant notre politique de confidentialité et nos pratiques de traitement des données, veuillez nous contacter à l'adresse [adresse e-mail ou lien vers le formulaire de contact].</p>
+          <p>Pour exercer ces droits ou pour toute question concernant notre politique de confidentialité et nos pratiques de traitement des données, veuillez nous contacter à l'adresse <a class="text-indigo-600 font-bold" href="mailto:thomas.torrente@gmail.com">thomas.torrente@gmail.com</a>.</p>
 
           <h2 class="text-lg pl-2 mt-9 mb-3 border-l-4 font-sans font-bold border-indigo-600 dark:text-gray-200">
             Modifications de Notre Politique de Confidentialité
             </h2>
           <p>Nous nous réservons le droit de mettre à jour et de modifier occasionnellement cette politique de confidentialité pour refléter les changements dans nos pratiques de traitement des données et les exigences légales. Nous vous encourageons à consulter régulièrement cette page pour rester informé(e) de la manière dont nous protégeons vos données personnelles.</p>
 
-          <p>Chez [Nom de Votre Entreprise/Site Web], la protection de vos données personnelles est au cœur de notre engagement envers vous. Nous vous remercions de votre confiance et de votre fidélité.</p>
+          <p>Chez nous, la protection de vos données personnelles est au cœur de notre engagement envers vous. Nous vous remercions de votre confiance et de votre fidélité.</p>
 
-          <p>Date de la dernière mise à jour : [Date de la dernière mise à jour de la politique de confidentialité]</p>
+          <p>Date de la dernière mise à jour : 02/07/2024</p>
         </div>
       </div>
     </div>
