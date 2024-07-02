@@ -1,23 +1,23 @@
 <script>
-	async function postData(url = "", data = {}) {
-	const response = await fetch(url, {
-		method: "POST",
-		mode: "cors",
-		cache: "no-cache",
-		credentials: "same-origin",
-		headers: {
-		"Content-Type": "application/json",
-		},
-		redirect: "follow",
-		referrerPolicy: "no-referrer",
-		body: JSON.stringify(data),
-	});
-	return response.json();
-	}
+	// async function postData(url = "", data = {}) {
+	// const response = await fetch(url, {
+	// 	method: "POST",
+	// 	mode: "cors",
+	// 	cache: "no-cache",
+	// 	credentials: "same-origin",
+	// 	headers: {
+	// 	"Content-Type": "application/json",
+	// 	},
+	// 	redirect: "follow",
+	// 	referrerPolicy: "no-referrer",
+	// 	body: JSON.stringify(data),
+	// });
+	// return response.json();
+	// }
 
-	postData("http://API", { param1: 1, param2: 2 }).then((data) => {
-		console.log(data);
-	});
+	// postData("http://API", { param1: 1, param2: 2 }).then((data) => {
+	// 	console.log(data);
+	// });
 </script>
 
 <form class="mt-auto mb-0">
