@@ -21,7 +21,9 @@
 </script>
 
 <form class="mt-auto mb-0">
-    <h1 class="mb-4 text-5xl font-extrabold text-gray-900">S'inscrire</h1>
+	<h1 class="text-2xl md:text-3xl pl-2 my-2 border-l-4 font-sans font-bold border-indigo-600 dark:text-gray-200">
+		S'inscrire
+	</h1>
     <div class="space-y-12">
         <div class="border-b border-gray-900/10 pb-12">
             <div class="mt-10 grid grid-cols-1 gap-x-6 gap-y-8 sm:grid-cols-6">
