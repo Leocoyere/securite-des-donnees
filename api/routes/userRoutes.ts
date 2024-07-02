@@ -1,18 +1,18 @@
 import express from 'express';
 import UserController from '../controllers/userController';
 import authenticateToken from '../middleware/authentification';
-import encode from '../middleware/encode';
+import encrypt from '../middleware/encrypt';
 
 const router = express.Router();
 
 // Route pour la connexion (login)
-router.post('/login', encode, UserController.loginUser);
+router.post('/login', encrypt, UserController.loginUser);
 
 // Route pour obtenir tous les utilisateurs
 router.get('/getAllUsers', UserController.getAllUsers);
 
 // Route pour créer un utilisateur
-router.post('/',  encode, UserController.createUser);
+router.post('/',  encrypt, UserController.createUser);
 
 // Route pour obtenir un utilisateur par I
 //@ts-ignore

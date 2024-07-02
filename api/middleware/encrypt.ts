@@ -16,7 +16,7 @@ if (key.length !== 32 || iv.length !== 16) {
     throw new Error('AES_KEY doit être de 32 caractères et AES_IV de 16 caractères');
 }
 
-const encode = (req: Request, res: Response, next: NextFunction) => {
+const encrypt = (req: Request, res: Response, next: NextFunction) => {
     if (req.body.password != undefined) {
         let cipher = crypto.createCipheriv('aes-256-cbc', Buffer.from(key), Buffer.from(iv));
         req.body.password = cipher.update(req.body.password);
@@ -32,4 +32,4 @@ const encode = (req: Request, res: Response, next: NextFunction) => {
     next()
 };
 
-export default encode;
+export default encrypt;
