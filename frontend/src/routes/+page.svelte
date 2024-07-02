@@ -11,7 +11,11 @@
 	  products = [
 		{ id: 1, name: 'Capote brice (5)', price: 10, image: 'https://www.lilicom.eu/cdn/shop/products/preservatif_humoristique_brice_de_nice_1080x.png?v=1655998487' },
 		{ id: 2, name: 'Capote DarkVador (5)', price: 10, image: 'https://www.callvin.com/1346-medium_default/darkapote.jpg' },
-		{ id: 3, name: 'Capote Magique	 (5)', price: 10, image: 'https://farfouil-en-fete.fr/cdn/shop/files/1695476303jpg_e1a1d3a9-4ecb-40b3-97ee-22c1308ff42f.jpg?v=1695988693' }
+		{ id: 3, name: 'Capote Magique	 (5)', price: 10, image: 'https://farfouil-en-fete.fr/cdn/shop/files/1695476303jpg_e1a1d3a9-4ecb-40b3-97ee-22c1308ff42f.jpg?v=1695988693' },
+		{ id: 4, name: 'Capote lecteur (5)', price: 10, image: 'https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcQG_fa0gEXfAJtnBiLaaauTNJiQ7snkdwzsVA&s'}, 
+		{ id: 5, name: 'Capote Gauloise (5)', price: 10, image: 'https://www.callvin.com/modules/prestatemplatev2/page-builder/wp-content/uploads/PUSH-la-gaule--734x600.png'},
+		{ id: 6, name: 'Capote Olympique (5)', price: 100, image: 'https://www.callvin.com/3039-medium_default/saut-a-la-perche.jpg'}, 
+		{ id: 7, name: 'Capote Cauchemard (5)', price: 10, image: 'https://www.cadeau-rigolo.com/12404-home_default/preservatif-cauchemar-dans-ton-slip.jpg'}
 	  ];
 	});
   
