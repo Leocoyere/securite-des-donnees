@@ -1,15 +1,14 @@
 <script>
+    import { authenticated } from '../../stores/auth'; // Assurez-vous d'importer correctement votre store
     import { goto } from '$app/navigation';
     import Cookies from 'js-cookie';
-    import {authenticated} from '../../stores/auth';
 
-    
     let email = '';
     let password = '';
 
     const submit = async () => {
         try {
-            const response = await fetch('http://127.0.0.1:5000/api/users/login', {
+            const response = await fetch('http://localhost:5000/api/users/login', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 credentials: 'include',
@@ -22,18 +21,23 @@
 
             const data = await response.json();
             console.log(data);
-            
-            // Stocker le token dans un cookie
-            Cookies.set('token', data.token, { expires: 7 });
-            authenticated.set(true)
 
+            // Mettre à jour le store authenticated après une connexion réussie
+            authenticated.set(true);
+
+            // Stocker le token dans un cookie pour maintenir la session
+            Cookies.set('token', data.token, { expires: 7 });
+
+            // Rediriger vers la page principale ou une autre page appropriée
             goto('/');
         } catch (error) {
-            authenticated.set(false)
             console.error('There was a problem with the fetch operation:', error);
         }
     };
 </script>
+
+
+
 
 <form class="mb-0 flex flex-col items-center" on:submit|preventDefault={submit}>
     <h1 class="mb-4 text-5xl font-extrabold text-gray-900">Se connecter</h1>

@@ -3,6 +3,17 @@
 	import Footer from './Footer.svelte';
 	import './styles.css';
 	import "../app.css";
+	import Cookies from 'js-cookie';
+	import { onMount } from 'svelte';
+	import { authenticated } from '../stores/auth';
+	onMount(() => {
+        const token = Cookies.get('token');
+        if (token) {
+            authenticated.set(true);
+        } else {
+            authenticated.set(false);
+        }
+    });
 
 </script>
 
