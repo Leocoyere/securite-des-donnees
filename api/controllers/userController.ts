@@ -9,7 +9,7 @@ class UserController {
       const users = await UserService.getAllUsers();
       res.status(200).json({
         success: true,
-        message: 'Users retrieved successfssssully',
+        message: 'Users retrieved successfully',
         data: users,
       });
     } catch (error: unknown) {
