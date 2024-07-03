@@ -1,4 +1,5 @@
 <script>
+    import { goto } from '$app/navigation';
 
 	let first_name = ""
 	let last_name = ""
@@ -26,7 +27,11 @@
 		referrerPolicy: "no-referrer",
 		body: JSON.stringify(data),
 	});
+    goto('/login');
 	return response.json();
+    
+
+
 	}
 
 	function createUser() {

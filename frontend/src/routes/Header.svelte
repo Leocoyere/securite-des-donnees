@@ -38,6 +38,9 @@
                 <a href="/">Home</a>
             </li>
             {#if isLoggedIn}
+			<li aria-current={$page.url.pathname === '/account' ? 'page' : undefined}>
+				<a href="/account">Mon compte</a>
+			</li>
                 <li aria-current={$page.url.pathname === '/logout' ? 'page' : undefined}>
                     <a on:click={logout}>Déconnexion</a>
                 </li>
