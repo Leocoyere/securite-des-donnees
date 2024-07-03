@@ -2,11 +2,13 @@
     import { goto } from '$app/navigation';
     import Cookies from 'js-cookie';
     import { onMount } from 'svelte';
+    import { authenticated } from '../../stores/auth';
 
     let user = null;
+    let token = null;  // Définir token ici
 
     const fetchUser = async () => {
-        const token = Cookies.get('token');
+        token = Cookies.get('token');  // Mettre à jour token ici
         if (!token) {
             goto('/');
             return;
@@ -33,10 +35,15 @@
         }
     };
 
-
     const deleteAccount = async () => {
+        token = Cookies.get('token');  // Récupérer de nouveau token ici
+        if (!token) {
+            goto('/');
+            return;
+        }
+
         try {
-            const response = await fetch('http://localhost:5000/api/users', {
+            await fetch('http://localhost:5000/api/users', {
                 method: 'DELETE',
                 headers: {
                     'Authorization': `Bearer ${token}`,
@@ -45,16 +52,15 @@
                 credentials: 'include'
             });
 
-            console.log('Compte et données supprimer avec succès');
+            alert('Compte et données supprimés avec succès');
+            authenticated.set(false);
             Cookies.remove('token');
             goto('/');
         } catch (error) {
             console.error('There was a problem with the fetch operation:', error);
-            goto('/');
+            goto('/account');
         }
-
-    }
-
+    };
 
     onMount(() => {
         fetchUser();
