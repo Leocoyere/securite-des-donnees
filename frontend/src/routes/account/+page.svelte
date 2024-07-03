@@ -5,10 +5,11 @@
     import { authenticated } from '../../stores/auth';
 
     let user = null;
-    let token = null;  // Définir token ici
+    let token = null; 
 
+    // Récupération des informations du compte
     const fetchUser = async () => {
-        token = Cookies.get('token');  // Mettre à jour token ici
+        token = Cookies.get('token'); 
         if (!token) {
             goto('/');
             return;
@@ -35,6 +36,7 @@
         }
     };
 
+    // Suppresion du compte
     const deleteAccount = async () => {
         token = Cookies.get('token');  // Récupérer de nouveau token ici
         if (!token) {
