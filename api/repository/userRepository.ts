@@ -1,5 +1,8 @@
 import { User } from "../modele/user";
 import pool from "../db/database";
+import { getFormattedTimestamp } from "../middleware/authentification";
+import { CustomRequest } from "../middleware/authentification";
+
 
 class UserRepository {
   static async getAllUsers(): Promise<User[]> {
@@ -57,6 +60,7 @@ class UserRepository {
 
   static async createUser(user: User): Promise<void> {
     try {
+      const currentTimestamp = getFormattedTimestamp(new Date);
       const c = await pool.connect();
       try {
         const query = `
@@ -73,7 +77,7 @@ class UserRepository {
           user.adress,
           user.cb,
           user.status || 'New',
-          user.lastConnection || '2024-07-02 13:10:00'
+          user.lastConnection || currentTimestamp
         ];
         const result = await pool.query(query, values);
         const insertedUserId = result.rows[0].user_id;
@@ -116,6 +120,32 @@ class UserRepository {
           userId,
         ];
         console.log(values)
+        await pool.query(query, values);
+      } catch (error: unknown) {
+        throw error;
+      } finally {
+        c.release()
+      }
+    } catch (error: unknown) {
+      throw error;
+    }
+  }
+
+
+  static async updateUserLasconnection(req : CustomRequest): Promise<void> {
+    try {
+      let c = await pool.connect()
+
+      try {
+        const query = `
+          UPDATE users
+          SET lastconnection = $1
+          WHERE user_id = $2
+        `;
+        const values = [
+          getFormattedTimestamp(new Date),
+          req.id
+        ];
         await pool.query(query, values);
       } catch (error: unknown) {
         throw error;

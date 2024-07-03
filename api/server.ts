@@ -1,5 +1,7 @@
 import express, { Request, Response } from 'express';
 import userRoutes from './routes/userRoutes';
+import cron from 'node-cron';
+import deleteInactiveUsers from './cron/deleteInactiveUsers';
 var cors = require('cors')
 
 const app = express();
@@ -21,8 +23,11 @@ app.use(cors({
 
 app.use('/api/users', /*cors(corsOptions), */ userRoutes);
 
-// Serve the frontend
-// app.use(express.static('dist')); // Assurez-vous que votre dossier de build de la partie frontend est "dist"
+// Planifier la tâche pour s'exécuter tous les jours à minuit
+cron.schedule('0 0 * * *', () => {
+  console.log('Running scheduled task to delete inactive users...');
+  deleteInactiveUsers();
+});
 
 // Lancer le serveur
 app.listen(port, () => {

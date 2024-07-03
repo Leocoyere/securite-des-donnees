@@ -1,6 +1,6 @@
 import express from 'express';
 import UserController from '../controllers/userController';
-import authenticateToken from '../middleware/authentification';
+import { authenticateToken, getFormattedTimestamp } from '../middleware/authentification';
 import encrypt from '../middleware/encrypt';
 
 const router = express.Router();
