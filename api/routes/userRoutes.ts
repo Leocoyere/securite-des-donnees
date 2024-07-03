@@ -24,7 +24,7 @@ router.put('/', authenticateToken, UserController.updateUser);
 
 // Route pour supprimer un utilisateur
 //@ts-ignore
-router.delete('/:id', authenticateToken, UserController.deleteUser);
+router.delete('/', authenticateToken, UserController.deleteUser);
 
 // Route pour la déconnexion (logout)
 router.post('/disconnect',  authenticateToken,  UserController.disconnectUser);
